@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<!-- configuration 이게 root element -->
+	<settings>
+		<setting name="mapUnderscoreToCamelCase" value="true" />
+		<!-- camelCase자동으로 바꿔주는 거  -->
+		<setting name="jdbcTypeForNull" value="VARCHAR" />
+		<!-- NULL을 넣었을 때 자동으로 뭘 넣어 줄 건 지ㅇㅇ -->
+	</settings>
+	<typeAliases>
+		<package name="com.yedam.app" /> <!-- aliase자동으로ㅓ 처리 -->
+	</typeAliases>
+</configuration>

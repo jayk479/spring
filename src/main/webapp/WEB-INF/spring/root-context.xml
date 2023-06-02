@@ -8,10 +8,12 @@
 	<!-- Root Context: defines shared resources visible to all other web components -->
 	<!-- datasource connection pool -->
 	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
+		<!-- <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" 
+			/> -->
 		<property name="driverClassName"
-			value="oracle.jdbc.driver.OracleDriver" />
+			value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy" />
 		<property name="jdbcUrl"
-			value="jdbc:oracle:thin:@127.0.0.1:1521:xe" />
+			value="jdbc:log4jdbc:oracle:thin:@127.0.0.1:1521:xe" />
 		<property name="username" value="hr" />
 		<property name="password" value="hr" />
 	</bean>
@@ -24,8 +26,11 @@
 	<!-- mybatis SqlSessionFactory -->
 	<bean class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
+		<property name="configLocation"
+			value="classpath:mybatis-config.xml" />
 	</bean>
-	
-	<mybatis-spring:scan base-package="com.yedam.app.**.mapper"/>
+
+	<mybatis-spring:scan
+		base-package="com.yedam.app.**.mapper" />
 
 </beans>
