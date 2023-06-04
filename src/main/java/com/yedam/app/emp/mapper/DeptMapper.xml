@@ -4,23 +4,36 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.yedam.app.emp.mapper.DeptMapper">
-	<select id="deptList"
-		resultType="com.yedam.app.emp.service.DeptVO">
-		SELECT * FROM DEPARTMENTS
-	</select>
-
-	<select id="deptSelect" resultType="com.yedam.app.emp.service.DeptVO">
+	<select id="deptList" resultType="com.yedam.app.emp.service.DeptVO">
 		SELECT * FROM DEPARTMENTS
 		<where>
-			<if test="departmentName != nuill and departmentName != ''">
-				DEPARTMENT_NAME like '%${departmentName}%'
+			<if test="departmentName != null and departmentName != ''">
+				AND DEPARTMENT_NAME like '%${departmentName}%'
 			</if>
-			<if test="locationId != nuill and locationId != ''">
+			<if test="locationId != null and locationId != ''">
 				AND LOCATION_ID in
-				<foreach open="(" close=")" separator="," collection="deptArr" item="dept">
-					#{locationId}
+				<foreach open="(" close=")" separator="," collection="locaIdArr" item="loca">
+					#{loca}
 				</foreach>
 			</if>
 		</where>
 	</select>
+	
+	<insert id="deptInsert" parameterType="com.yedam.app.emp.service.DeptVO">
+		INSERT INTO departments (department_id, department_name) VALUES (#{departmentId}, #{departmentName})
+	</insert>
+	
+	<select id="deptSelect" resultType="com.yedam.app.emp.service.DeptVO">
+		SELECT * FROM departments WHERE department_id = #{deptId}
+	</select>
+	
+	<update id="deptUpdate">
+		UPDATE departments SET department_name=#{departmentName} WHERE department_ID=#{deptId}
+	</update>
+	
+	<select id="selectLocation" resultType="map">
+		SELECT LOCATION_ID "loacationId", CITY "city" FROM LOCATIONS
+	</select>
+	
+	
 </mapper>
