@@ -34,11 +34,14 @@
 					<td>${dept.departmentName}</td>
 					<td>${dept.managerId}</td>
 					<td>${dept.locationId}</td>
-					<td><button onclick = "location.href = 'deptUpdate?deptId=${dept.departmentId}'" >수정</button></td>
+					<td><button
+							onclick="location.href = 'deptUpdate?deptId=${dept.departmentId}'">수정</button></td>
 					<td><button>삭제</button></td>
 				</tr>
 			</c:forEach>
 		</tbody>
 	</table>
+
+
 </body>
 </html>

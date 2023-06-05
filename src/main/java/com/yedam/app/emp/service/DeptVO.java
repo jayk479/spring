@@ -10,8 +10,8 @@ public class DeptVO {
 	int locationId;
 	String city;
 
-	String[] getLocaIdArr() {
-		return Integer.toString(locationId).split(",");
-	}
+//	String[] getLocaIdArr() {
+//		return Integer.toString(locationId).split(",");
+//	}
 
 }

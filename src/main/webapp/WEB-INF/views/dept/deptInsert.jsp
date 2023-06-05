@@ -10,7 +10,7 @@
 <body>
 	<h3>부서등록</h3>
 	<form action="deptInsert" method="post">
-		departmentId<input name="departmentId" ><br>
+		
 		departmentName<input name="departmentName" ><br>
 		location
 		<select name="locationId">

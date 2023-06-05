@@ -9,7 +9,7 @@
 </head>
 <body>
 	<h3>부서수정</h3>
-	<form action="deptUpdate" method="post">
+	<form action="deptInfo" method="post">
 		departmentId<input name="departmentId" value="${dept.departmentId}"><br>
 		departmentName<input name="departmentName" value="${dept.departmentName}"><br>
 		location
