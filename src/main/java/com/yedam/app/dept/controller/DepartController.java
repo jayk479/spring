@@ -70,20 +70,20 @@ public class DepartController {
 	}
 	
 	// 등록 - 기능 : POST
-	@PostMapping("/deptInsert")
-	public String depptInsert(DepartVO vo, RedirectAttributes rtt) {
-		departService.insertDeptInfo(vo);
-		rtt.addFlashAttribute("departmentId", vo.getDepartmentId());
-		// 경로에 데이터 기재하면 보안상 문제
-		// insert 끝나고 vo는 끝났음ㅇㅇ
-		// addFlashAttribute 리다이렉트 할 때 정보를 세션에 저장함.
-		// => get방식으로 redirect되더라도 경로에 정보 필요xx
-		// 어차피 redirect는 get방식 밖에 안 됨ㅇㅇ
-		// 세션은 브라우저 단위로 유지 됨ㅇㅇ	
-		rtt.addAttribute("msg", "test"); // ?msg=test 이하처럼 나오는 방법임ㅇㅇ
-		//return "redirect:deptList?departmentId="+vo.getDepartmentId();
-		return "redirect:deptList";
-	}
+//	@PostMapping("/deptInsert")
+//	public String depptInsert(DepartVO vo, RedirectAttributes rtt) {
+//		departService.insertDeptInfo(vo);
+//		rtt.addFlashAttribute("departmentId", vo.getDepartmentId());
+//		// 경로에 데이터 기재하면 보안상 문제
+//		// insert 끝나고 vo는 끝났음ㅇㅇ
+//		// addFlashAttribute 리다이렉트 할 때 정보를 세션에 저장함.
+//		// => get방식으로 redirect되더라도 경로에 정보 필요xx
+//		// 어차피 redirect는 get방식 밖에 안 됨ㅇㅇ
+//		// 세션은 브라우저 단위로 유지 됨ㅇㅇ	
+//		rtt.addAttribute("msg", "test"); // ?msg=test 이하처럼 나오는 방법임ㅇㅇ
+//		//return "redirect:deptList?departmentId="+vo.getDepartmentId();
+//		return "redirect:deptList";
+//	}
 	
 	// 수정 - 기능 : POST
 	// @RequestBody : json포맷을 사용하는 경우ㅇㅇ
@@ -91,13 +91,13 @@ public class DepartController {
 	@PostMapping("/deptUpdate")
 	@ResponseBody // 응답하는 body에 필요한 데이터를 집어 넣는 어노테이션, 리턴타입이 스트링일 필요 없음ㅇㅇ
 	//응답 할 때 내가 넘겨주는 데이터를 넣어줘라. 그럼 리다이렉트는 없어?
-	public Map<String, Object> deptUpdate(@RequestBody List<DepartVO> vo, RedirectAttributes rtt) {
-		//body 내부의 값을 parsing했을 때 어떤 형태로 보여 줄 지? 
-		//Map<String, Object> map = departService.updateDeptList(vo);
-		//rtt.addFlashAttribute("updateRes", map);
-		//return "redirect:deptInfo?departmentId="+vo.get(0).getDepartmentId();
-		return departService.updateDeptList(vo);
-	}
+//	public Map<String, Object> deptUpdate(@RequestBody List<DepartVO> vo, RedirectAttributes rtt) {
+//		//body 내부의 값을 parsing했을 때 어떤 형태로 보여 줄 지? 
+//		//Map<String, Object> map = departService.updateDeptList(vo);
+//		//rtt.addFlashAttribute("updateRes", map);
+//		//return "redirect:deptInfo?departmentId="+vo.get(0).getDepartmentId();
+//		return departService.updateDeptList(vo);
+//	}
 	
 	public String deptUpdateText(@RequestBody List<DepartVO> vo, RedirectAttributes rtt) {
 		

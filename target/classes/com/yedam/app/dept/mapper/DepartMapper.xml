@@ -27,7 +27,7 @@
 	<insert id="insertDeptInfo" parameterType="DepartVO">
 		<selectKey keyProperty="departmentId" resultType="int"
 			order="BEFORE">
-			SELECT NVL(MAX(department_id),0)+1
+			SELECT NVL(MAX(department_id),0)+10
 			FROM departments
 		</selectKey>
 		INSERT INTO departments (
