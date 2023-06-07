@@ -33,6 +33,7 @@ public class EmpController {
 		// 브라우저에서 리퀘스트 되는 파라메터 들은 EmpVO로 들어감 필드 이게 커맨드 객체ㅇㅇ
 		// 그래서 이렇게 담은 vo가 매퍼의 쿼리까지 전달 됨ㅇㅇ
 		// @ModelAttribute("emp") EmpVO vo객체를 emp라는 이름으로 쓸 수 있게 함ㅇㅇ
+		// 보낸데이터를 유지해야 할 때 주로 사용
 		model.addAttribute("empVO", vo); //커맨드 객체
 		model.addAttribute("empList", empMapper.selectList(vo));
 		//System.out.println(vo);

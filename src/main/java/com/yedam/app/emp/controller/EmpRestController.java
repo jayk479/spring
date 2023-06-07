@@ -1,0 +1,78 @@
+package com.yedam.app.emp.controller;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.yedam.app.emp.mapper.EmpMapper;
+import com.yedam.app.emp.service.EmpVO;
+
+@RestController
+public class EmpRestController {
+	
+	@Autowired
+	EmpMapper empMapper;
+	
+	//전체조회
+	@GetMapping("emps")
+	public List<EmpVO> getEmpList(){
+		EmpVO empVO = new EmpVO();
+		return empMapper.selectList(empVO);
+	}
+	
+	//단건조회
+	@GetMapping("emps/{employeeId}")
+	public EmpVO getEmpInfo(@PathVariable(name="employeeId") int empId) {
+	//public EmpVO getEmpInfo(@PathVariable int employeeId) {
+		return empMapper.selectOne(empId);
+	}
+	
+	//등록
+	@PostMapping("emps")
+	public EmpVO insertEmpInfo(@RequestBody EmpVO empVO) {
+		empMapper.insertEmp(empVO);
+		return empVO;
+	}
+	
+	//수정
+	@PutMapping("emps/{employeeId}")
+	public EmpVO updateEmpInfo(@PathVariable String employeeId, @RequestBody EmpVO empVO){
+		empVO.setEmployeeId(employeeId);
+		empMapper.updateEmp(empVO);
+		return empVO;
+	}
+	
+	//삭제
+//	@DeleteMapping("emps/{employeeId}")
+//	public int deleteEmpInfo(@PathVariable int employeeId) {
+//		empMapper.deleteEmp(employeeId);
+//		return employeeId;
+//	}
+	
+	@DeleteMapping("emps/{employeeId}")
+	public Map<String, Object> deleteEmpInfo(@PathVariable int employeeId) {
+		boolean success = false;
+		int result = empMapper.deleteEmp(employeeId);
+		if(result > 0) {
+			success = true;
+		}
+		Map<String, Object> map = new HashMap<>();
+		map.put("result", success);
+		map.put("employee_id", employeeId);
+		
+		return map;
+	}
+	
+	//map은 일시적인 객체로 생성하기 좋아
+	//어떤걸 보내고 나서 결과를 확인 할 때 유용함ㅇㅇ
+	
+}
