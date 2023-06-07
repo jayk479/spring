@@ -91,13 +91,13 @@ public class DepartController {
 	@PostMapping("/deptUpdate")
 	@ResponseBody // 응답하는 body에 필요한 데이터를 집어 넣는 어노테이션, 리턴타입이 스트링일 필요 없음ㅇㅇ
 	//응답 할 때 내가 넘겨주는 데이터를 넣어줘라. 그럼 리다이렉트는 없어?
-	public Map<String, Object> deptUpdate(@RequestBody List<DepartVO> vo, RedirectAttributes rtt) {
-		//body 내부의 값을 parsing했을 때 어떤 형태로 보여 줄 지? 
-		//Map<String, Object> map = departService.updateDeptList(vo);
-		//rtt.addFlashAttribute("updateRes", map);
-		//return "redirect:deptInfo?departmentId="+vo.get(0).getDepartmentId();
-		return departService.updateDeptList(vo);
-	}
+//	public Map<String, Object> deptUpdate(@RequestBody List<DepartVO> vo, RedirectAttributes rtt) {
+//		//body 내부의 값을 parsing했을 때 어떤 형태로 보여 줄 지? 
+//		//Map<String, Object> map = departService.updateDeptList(vo);
+//		//rtt.addFlashAttribute("updateRes", map);
+//		//return "redirect:deptInfo?departmentId="+vo.get(0).getDepartmentId();
+//		return departService.updateDeptList(vo);
+//	}
 	
 	public String deptUpdateText(@RequestBody List<DepartVO> vo, RedirectAttributes rtt) {
 		

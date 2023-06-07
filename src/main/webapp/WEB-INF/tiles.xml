@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+	<definition name="mainTemplate" template="/WEB-INF/views/tiles/layout.jsp">
+		<!-- 여기서 name은 절대로 사용하지 않을 단어로 해줘야 됨 중복안되게 -->
+		<!-- cuz 순차적으로 definition에 있는 이름으로 찾아가기 때문에? -->
+		<!-- 미완성의 페이지? -->
+		<put-attribute name="header" value="/WEB-INF/views/tiles/header.jsp" />
+	</definition>
+	
+	<definition name="*/*" extends="mainTemplate">
+		<put-attribute name="content" value="/WEB-INF/views/{1}/{2}.jsp" />
+	</definition>
+	
+	
+</tiles-definitions>
