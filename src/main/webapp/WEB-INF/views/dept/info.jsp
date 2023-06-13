@@ -30,7 +30,7 @@
 					name="locationId" value="${deptInfo.locationId}">
 			</div>
 			<button type="submit">수정</button>
-			<button type="button">목록</button>
+			<button type="button" onclick="location.href='deptList'">목록</button>
 		</div>
 	</form>
 	<script>
